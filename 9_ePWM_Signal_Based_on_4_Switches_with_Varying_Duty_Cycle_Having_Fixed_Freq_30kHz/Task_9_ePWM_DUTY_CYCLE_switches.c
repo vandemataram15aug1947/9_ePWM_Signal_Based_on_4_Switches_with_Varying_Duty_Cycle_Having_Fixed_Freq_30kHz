@@ -1,5 +1,3 @@
-/*Maaz khan
-  Reg No : 19jzele0320
 
 /////////////////////////////// Task-10  ////////////////////////////////////////////////////////////
 
@@ -21,7 +19,7 @@ The Duty Cycle Should Varying Between 0  &  100%
 // Function Prototypes
 //
 
-//////////////  MAAZ KHAN  ///////////////////
+////////////// Vande ///////////////////
 void initEPWM1(void);
 void Timer_Delay(void);
 void PinMux_init();
@@ -48,7 +46,7 @@ void main(void)
     Interrupt_initVectorTable();
 
 
-    //////////////  MAAZ KHAN  ///////////////////
+    ////////////// Vande ///////////////////
 
     // This is needed to write to EALLOW protected registers
     EALLOW;
@@ -71,7 +69,7 @@ void main(void)
     // Enable CPU INT1
     IER |= M_INT12;// M- means to Enable
 
-    //////////////  MAAZ KHAN  ///////////////////
+    ////////////// Vande ///////////////////
 
     // Enable  ,XINT1,XINT2,XINT3 ,XINT4    in the PIE: Group 1 & 12 __interrupt 4,5,1,2
 
@@ -86,7 +84,7 @@ void main(void)
     // Enable PIE Group 12 INT2
     PieCtrlRegs.PIEIER12.bit.INTx2 = 1;
 
-    //////////////  MAAZ KHAN  ///////////////////
+    ////////////// Vande ///////////////////
 
     //Configure GPIO67,GPIO22,GPIO11,GPIO14 FOR xINT1,xINT2xINT3,xINT4
     GPIO_SetupXINT1Gpio(67);
@@ -106,7 +104,7 @@ void main(void)
     //Initialize ePWM1
     initEPWM1();
 
-    //////////////  MAAZ KHAN  ///////////////////
+    ////////////// Vande ///////////////////
 
     // Disable XINT1
     XintRegs.XINT1CR.bit.ENABLE = 0;
@@ -126,7 +124,7 @@ void main(void)
 
     while(1){
 
-        //////////////  MAAZ KHAN  ///////////////////
+        ////////////// Vande ///////////////////
 
         //Enable XINT1
         XintRegs.XINT1CR.bit.ENABLE = 1;
@@ -147,7 +145,7 @@ void main(void)
 
 void initEPWM1()
 {
-    //////////////  MAAZ KHAN  ///////////////////
+    ////////////// Vande ///////////////////
 
     // Set frequency 30K Hz
     EPwm1Regs.TBPRD = 1666;
@@ -155,7 +153,7 @@ void initEPWM1()
     EPwm1Regs.TBPHS.bit.TBPHS = 0x0000;
     EPwm1Regs.TBCTR = 0x0000;
 
-    //////////////  MAAZ KHAN  ///////////////////
+    ////////////// Vande ///////////////////
 
     // Set compare A value  Duty cycle of 0%
     EPwm1Regs.CMPA.bit.CMPA = 1666;
@@ -171,7 +169,7 @@ void initEPWM1()
     EPwm1Regs.AQCTLA.bit.CAU = AQ_SET;
     EPwm1Regs.AQCTLA.bit.CAD = AQ_CLEAR;
 
-    //////////////  MAAZ KHAN  ///////////////////
+    ////////////// Vande ///////////////////
 
     void PinMux_init()
     {
@@ -185,7 +183,7 @@ void initEPWM1()
         EDIS;
 
     }
-    //////////////  MAAZ KHAN  ///////////////////
+    ////////////// Vande ///////////////////
 
     // ISR for Gpio(67)
     __interrupt void xINT1_isr(void)
@@ -222,7 +220,7 @@ void initEPWM1()
         PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
     }
 
-    //////////////  MAAZ KHAN  ///////////////////
+    ////////////// Vande ///////////////////
 
     // ISR for Gpio(22)
     __interrupt void xINT2_isr(void)
@@ -261,7 +259,7 @@ void initEPWM1()
 
     }
 
-    //////////////  MAAZ KHAN  ///////////////////
+    ////////////// Vande ///////////////////
 
     // ISR for Gpio(11)
     __interrupt void xINT3_isr(void)
@@ -300,7 +298,7 @@ void initEPWM1()
 
     }
 
-    //////////////  MAAZ KHAN  ///////////////////
+    ////////////// Vande ///////////////////
 
     // ISR for Gpio(14)
     __interrupt void xINT4_isr(void)
